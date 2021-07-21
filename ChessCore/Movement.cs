@@ -9,7 +9,6 @@ namespace ChessCore
         public Position endPosition {get;set;}
         public bool didCapturePiece {get;set;}
         public Piece movementMaker { get; set; }
-
         public Piece capturedPiece {get;set;}  
     }
 }
