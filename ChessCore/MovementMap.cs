@@ -4,9 +4,9 @@ namespace ChessCore
 {
     public class MovementMap
     {
-        
-        public Map map;
-        public Piece[,] possibleMovements;
+        public Piece caller{get;set;}
+        public Map map{get;set;}
+        public Piece[,] possibleMovements{get;set;}
 
     }
 }
