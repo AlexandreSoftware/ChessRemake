@@ -14,16 +14,18 @@ namespace ChessCore.Pieces
         public bool isAlive { get; set; }
         public Color color { get; set; }
         public List<Movement> movementHistory {get;set;}
-        public  MovementMap GetMovements(){
+  
+        public Position  ConvertDirectiontoXy(Direction d){
             return null;
         }
-        public Stack<Position> getPossiblePositions(){
-            return null;
-        }
-        public Stack<Position>  checkForPosition(){
-            return null;
-        }
-        public abstract void DoMovement();
+
+              // public  MovementMap GetMovements(){
+        //     return null;
+        // }
+        
+        // public Stack<Position> getPossiblePositions(){
+        //     return null;
+        // }
 
     }
 }
