@@ -16,29 +16,72 @@ namespace ChessTests
             p = new Pawn{position=new Position(1,2)};
         }
         [TestMethod]
-        public void Map_NewMap_EquivalentArrays()
+        public void Map_NewMap_EqualArrays()
         {
             var compareMap = new Piece[8,8];
-            CollectionAssert.AreEquivalent(testMap.map,compareMap);
+            CollectionAssert.AreEqual(testMap.map,compareMap);
         }
         [TestMethod]
-        public void PlacePiece_AddingPieces_EquivalentArrays(){
+        public void Map_NewMap_DifferentArrays()
+        {
+            var compareMap = new Piece[7,4];
+            CollectionAssert.AreNotEqual(testMap.map,compareMap);
+        }
+        [TestMethod]
+        public void PlacePiece_AddingPieces_EqualArrays(){
             testMap.PlacePiece(p);
             var compareMap = new Piece[8,8];
             compareMap[1,2] = p;
-            CollectionAssert.AreEquivalent(testMap.map,compareMap);
+            CollectionAssert.AreEqual(testMap.map,compareMap);
         }
         [TestMethod]
-        public void MovePiece_MovingPieces_EquivalentArrays(){
+        public void PlacePiece_AddingDifferentPieces_DifferentArrays(){
+            testMap.PlacePiece(p);
+            var compareMap = new Piece[8,8];
+            compareMap[1,2] =new Pawn{position=new Position(1,2)}; 
+            CollectionAssert.AreNotEqual(testMap.map,compareMap);
+        }
+        [TestMethod]
+        public void PlacePiece_AddingPiecesDifferentPlaces_DifferentArrays(){
+            testMap.PlacePiece(p);
+            var compareMap = new Piece[8,8];
+            compareMap[5,4] = p;
+            CollectionAssert.AreNotEqual(testMap.map,compareMap);
+        }
+        [TestMethod]
+        public void MovePiece_MovingPieces_EqualArrays(){
             testMap.PlacePiece(p);
             testMap.MovePiece(p,new Position(2,4));
             var compareMap = new Piece[8,8];
             compareMap[2,4] = p;
-            CollectionAssert.AreEquivalent(testMap.map,compareMap);
+            CollectionAssert.AreEqual(testMap.map,compareMap);
 
         } 
         [TestMethod]
-        public void removePiece_RemovingPieces_EquivalentArrays(){
+        public void MovePiece_MovingPiecesWrongPlace_DifferentArrays(){
+            testMap.PlacePiece(p);
+            Piece p1 = new Pawn{
+                position = new Position(4,2)
+            };
+            testMap.MovePiece(p,new Position(2,4));
+            var compareMap = new Piece[8,8];
+            compareMap[4,6] = p;
+            CollectionAssert.AreNotEqual(testMap.map,compareMap);
+        } 
+         [TestMethod]
+        public void MovePiece_MovingPiecesWrongPiece_DifferentArrays(){
+            Piece p1 = new Pawn{
+                position = new Position(4,2)
+            };
+            testMap.PlacePiece(p);
+            testMap.PlacePiece(p1);
+            testMap.MovePiece(p1,new Position(2,4));
+            var compareMap = new Piece[8,8];
+            compareMap[4,2] = p;
+            CollectionAssert.AreNotEqual(testMap.map,compareMap);
+        } 
+        [TestMethod]
+        public void removePiece_RemovingPieces_EqualArrays(){
             testMap.PlacePiece(p);
             Piece p1 = new Pawn{
                 position = new Position(4,2)
@@ -48,7 +91,20 @@ namespace ChessTests
             testMap.removePiece(p);
             var compareMap = new Piece[8,8];
             compareMap[4,2] = p1;
-        
+            CollectionAssert.AreEqual(testMap.map,compareMap);
+        }
+        [TestMethod]
+        public void removePiece_RemovingPiecesWrongPiece_DifferentArrays(){
+            testMap.PlacePiece(p);
+            Piece p1 = new Pawn{
+                position = new Position(4,2)
+            };
+            testMap.PlacePiece(p);
+            testMap.PlacePiece(p1);
+            testMap.removePiece(p1);
+            var compareMap = new Piece[8,8];
+            compareMap[4,2] = p;
+            CollectionAssert.AreNotEqual(testMap.map,compareMap);
         }
     }
 }
