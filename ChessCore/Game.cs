@@ -1,3 +1,5 @@
+using ChessCore.Pieces;
+
 namespace ChessCore
 {
     public class Game
@@ -5,6 +7,7 @@ namespace ChessCore
         public Player[] players { get; set; }
         public Map gameMap { get;set;}
         public int currentTurn { get; set; }
-        
+        public HashSet<Piece> capturedPieces {get; set;}
+     
     }
 }
