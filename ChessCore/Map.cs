@@ -8,7 +8,8 @@ namespace ChessCore
         public List<Piece> pieces {get;set;}
         
         public Map(){
-            map = new Piece[8,8];
+            this.map = new Piece[8,8];
+            this.pieces= new List<Piece>();
         }
         
         public void PlacePiece(Piece piece){
