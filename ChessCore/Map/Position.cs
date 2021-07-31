@@ -14,8 +14,8 @@ namespace ChessCore
             that way the size of the data is way smaller
 
         */
-        private int x {
-            get{
+        public int x {
+             get{
                 return x+1;
             }
             set{
@@ -27,7 +27,7 @@ namespace ChessCore
                 }
             }
         }
-        private int y{
+        public int y{
             get{
                 return y+1;
             }
