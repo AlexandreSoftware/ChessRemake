@@ -18,7 +18,7 @@ namespace ChessCore.Pieces
         public Position  ConvertDirectiontoXy(Direction d){
             return null;
         }
-        public PositionMap
+        // PositionMap
               // public  MovementMap GetMovements(){
         //     return null;
         // }
