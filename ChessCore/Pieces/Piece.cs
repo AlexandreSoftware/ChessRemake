@@ -14,13 +14,29 @@ namespace ChessCore.Pieces
         public bool isAlive { get; set; }
         public Color color { get; set; }
         public List<Movement> movementHistory {get;set;}
-  
-        public Position  ConvertDirectiontoXy(Direction d){
-            return null;
+        public MovementMap Mapmovements(){
+            MovementMap map = new MovementMap();
+            for (int i = 0; i < (int)Direction.Left; i++)
+            {
+                map = emulateMovement((Direction)i,map);
+            }
+            return map;
         }
-        public MovementMap MapMovements(Direction d){
-
+        public MovementMap emulateMovement(Direction d,MovementMap map){
+            if(d==Direction.Top){
+                return MakeMovement(0,1,map);
+            }
+            else if(d==Direction.Right){
+                return MakeMovement(1,0,map);
+            }
+            else if(d==Direction.Bottom){
+                return MakeMovement(0,-1,map);
+            }
+            else{
+                return MakeMovement(-1,0,map);
+            }
         }
+        public abstract MovementMap MakeMovement(int x, int y,MovementMap map);
               // public  MovementMap GetMovements(){
         //     return null;
         // }
