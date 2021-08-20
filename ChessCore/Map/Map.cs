@@ -5,8 +5,8 @@ namespace ChessCore
     public class Map
     {
         public Piece[,] map { get; set; }
-        public int x;
-        public int y;
+        public int x {get;set;}
+        public int y {get;set;}
         public List<Piece> pieces {get;set;}
         
         public Map(){
@@ -15,7 +15,9 @@ namespace ChessCore
             this.x=8;     
             this.pieces= new List<Piece>();
         }
-        
+        public Piece CheckPosition(Position p ){
+            return map[p.x,p.y];
+        }
         public void PlacePiece(Piece piece){
             var piecePosition = piece.position;
             map[piecePosition.x,piecePosition.y]=piece;
