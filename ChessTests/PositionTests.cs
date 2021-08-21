@@ -9,7 +9,7 @@ namespace ChessTests
         [TestMethod]
         public void Position_Equal_AreEqualPosition(){
             Position p = new Position (3,5);
-            Assert.IsTrue(p.x==3&&p.y==5);
+            Assert.IsTrue(p.x==2&&p.y==4);
         }
     }   
 }
