@@ -28,10 +28,16 @@ namespace ChessTests
             CollectionAssert.AreNotEqual(testMap.map,compareMap);
         }
         [TestMethod]
+        public void Map_CheckPositions_EqualPieces(){
+            testMap.PlacePiece(p);
+            var testp=testMap.choosePiece(p.position);
+            Assert.AreSame(p,testp);
+        }
+        [TestMethod]
         public void PlacePiece_AddingPieces_EqualArrays(){
             testMap.PlacePiece(p);
             var compareMap = new Piece[8,8];
-            compareMap[1,2] = p;
+            compareMap[0,1] = p;
             CollectionAssert.AreEqual(testMap.map,compareMap);
         }
         [TestMethod]
@@ -53,7 +59,7 @@ namespace ChessTests
             testMap.PlacePiece(p);
             testMap.MovePiece(p,new Position(2,4));
             var compareMap = new Piece[8,8];
-            compareMap[2,4] = p;
+            compareMap[1,3] = p;
             CollectionAssert.AreEqual(testMap.map,compareMap);
 
         } 
@@ -90,7 +96,7 @@ namespace ChessTests
             testMap.PlacePiece(p1);
             testMap.removePiece(p);
             var compareMap = new Piece[8,8];
-            compareMap[4,2] = p1;
+            compareMap[3,1] = p1;
             CollectionAssert.AreEqual(testMap.map,compareMap);
         }
         [TestMethod]
@@ -106,5 +112,6 @@ namespace ChessTests
             compareMap[4,2] = p;
             CollectionAssert.AreNotEqual(testMap.map,compareMap);
         }
+
     }
 }
