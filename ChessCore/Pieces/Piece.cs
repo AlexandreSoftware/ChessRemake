@@ -33,7 +33,7 @@ namespace ChessCore.Pieces
         }
         public abstract MovementMap MakeMovement(Position p,MovementMap map);
         public bool CheckForPiece(Position p){
-            if(parentMap.CheckPosition(p)!=null){
+            if(parentMap.choosePiece(p)!=null){
                 return true;
             }
             else{

@@ -15,9 +15,6 @@ namespace ChessCore
             this.x=8;     
             this.pieces= new List<Piece>();
         }
-        public Piece CheckPosition(Position p ){
-            return map[p.x,p.y];
-        }
         public void PlacePiece(Piece piece){
             var piecePosition = piece.position;
             map[piecePosition.x,piecePosition.y]=piece;
