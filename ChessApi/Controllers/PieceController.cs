@@ -14,8 +14,9 @@ namespace ChessApi.Controllers
             return null;
         }
         [HttpPost]
-        public IActionResult AddPiece(string x,int y,string color){
-            DisplayPiece p = new DisplayPiece(x[0],y,color);
+        public IActionResult AddPiece(string x,int y,string color,string type){
+            DisplayPiece p = new DisplayPiece(x[0],y,color,type);
+            p.type=type;
             return Ok(ps.AddPiece(p));
         }
         
