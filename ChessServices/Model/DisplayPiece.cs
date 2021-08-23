@@ -1,7 +1,7 @@
 using System;
 using System.IO;
-using ChessCore;
-namespace ChessApi.Model
+
+namespace ChessService.Model
 {
     public class DisplayPiece
     {

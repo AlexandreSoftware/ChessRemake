@@ -1,4 +1,4 @@
-namespace ChessApi.Model
+namespace ChessService.Model
 {
     public class DisplayPosition
     {
