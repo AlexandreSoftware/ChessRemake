@@ -4,6 +4,7 @@ namespace ChessCore.Pieces
 {
     public abstract class Piece
     {
+        public int id ;
         public Position position { get; set; }
         public Map parentMap { get; set; }
         public bool isAlive { get; set; }
