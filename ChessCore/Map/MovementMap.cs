@@ -6,7 +6,7 @@ namespace ChessCore
     {
         public Piece caller{get;set;}
         public Map map{get;set;}
-        public Piece[,] possibleMovements{get;set;}
+        public bool[,] possibleMovements{get;set;}
 
     }
 }
