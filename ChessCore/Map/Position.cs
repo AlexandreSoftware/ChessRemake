@@ -14,13 +14,15 @@ namespace ChessCore
             that way the size of the data is way smaller
 
         */
+        private int _x;
+        private int _y;
         public int x {
              get{
-                return x+1;
+                return _x+1;
             }
             set{
                 if(value<=8&&value>0){
-                    x=value-1;
+                    _x=value-1;
                 }
                 else{
                     throw new IOException("Index out of max range for position");
@@ -29,16 +31,19 @@ namespace ChessCore
         }
         public int y{
             get{
-                return y+1;
+                return _y+1;
             }
             set{
                 if(value<=8&&value>0){
-                    y=value-1;
+                    _y=value-1;
                 }
                 else{
                     throw new IOException("Index out of max range for position");
                 }
             }
+        }
+        public Position(int x,int y){
+            this.x=x; this.y=y;
         }
     }
 }

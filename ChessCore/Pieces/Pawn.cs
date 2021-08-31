@@ -5,6 +5,14 @@ namespace ChessCore.Pieces{
         /*i know im literally hardcoding this, but this makes the code more readable, while avoiding redundancy, 
         altough it wastes 3 loops"*/
         #warning TODO: add en passant support
+
+        public Pawn(int id, Position position, Map parentmap,bool isAlive,Color color,Movement[] movementHistory) :base(id,position,parentmap,isAlive,color,movementHistory){
+
+        }
+        public Pawn(int id, Position position,bool isAlive,Color color):base(id,position,isAlive,color){
+        
+        }
+
         public override MovementMap MakeMovement(Position p, MovementMap pmap){
             if(this.color==Color.White){
                 p= new Position(0,1);

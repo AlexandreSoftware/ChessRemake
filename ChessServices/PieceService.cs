@@ -39,26 +39,36 @@ namespace ChessService
                 return color;
             }            
             else{
-                throw new IOException("ERRO:NAO FOI POSSIVEL CONVERTER COR");
+                throw new IOException("ERROR: Couldn't convert to color");
             }
         }
         private DisplayPiece ConvertToDisplayPiece(Piece p)
         {
             return new DisplayPiece(
                     new DisplayPosition(ConvertToCharacter(p.position.x),p.position.y),
-                    p.color.ToString()
+                    p.color.ToString(),
+                    ConvertToString(p)
                 );
         }
+        private string ConvertToString(Piece t){
+            return nameof(t); 
+        }
+        private Position ConvertToPosition(DisplayPosition dpi){
+            return new Position(ConvertToNumber(dpi.x),dpi.y);
+        }
+        public Piece ConvertToPiece(DisplayPiece dpiece){
+            switch(dpiece.type.ToLower()){
+                case "pawn":
+                    return new Pawn(
+                        dpiece.id
+                    ,ConvertToPosition( dpiece.dPosition)
+                    ,dpiece.isAlive
+                    ,ConvertToColor(dpiece.color)
+                    );
 
-        private Piece ConvertToPiece(DisplayPiece dpiece){
-            Piece p = new Pawn{
-                id=dpiece.id,
-                color = ConvertToColor(dpiece.color),
-                isAlive=dpiece.isAlive,
-                position= new Position(ConvertToNumber(dpiece.dPosition.x),dpiece.dPosition.y)
-            };
-            return p;
-            
+                default:
+                    throw new IOException("ERROR: Invalid Type");
+            }
         }
     }
 }

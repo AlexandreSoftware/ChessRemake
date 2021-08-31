@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChessCore.Pieces
 {
@@ -10,6 +11,23 @@ namespace ChessCore.Pieces
         public bool isAlive { get; set; }
         public Color color { get; set; }
         public List<Movement> movementHistory {get;set;}
+        public Piece(int id, Position position, Map parentmap,bool isAlive,Color color,Movement[] movementHistory){
+            this.id=id;
+            this.position=position;
+            this.parentMap=parentmap;
+            this.isAlive=isAlive;
+            this.color=color;
+            this.movementHistory=movementHistory.ToList();
+        }
+        public Piece(int id, Position position,bool isAlive,Color color){
+            this.id=id;
+            this.position=position;
+            this.isAlive=isAlive=true;
+            this.color=color;
+        }
+        public Piece(){
+            
+        }
         public MovementMap Mapmovements(){
             MovementMap map = new MovementMap();
             for (int i = 0; i < (int)Direction.Left; i++)
