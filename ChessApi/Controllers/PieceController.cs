@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using ChessService;
 using ChessService.Model;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using System;
+
 namespace ChessApi.Controllers
 {
     [ApiController]
@@ -15,9 +19,16 @@ namespace ChessApi.Controllers
         }
         [HttpPost]
         public IActionResult AddPiece(string x,int y,string color,string type){
-            DisplayPiece p = new DisplayPiece(x[0],y,color,type);
-            p.type=type;
-            return Ok(ps.AddPiece(p));
+            try{
+                DisplayPiece p = new DisplayPiece(x[0],y,color,type);
+                return Ok(ps.AddPiece(p));
+            }
+            catch(IOException e){
+                return BadRequest(e.Message);
+            }
+            catch(Exception e){
+                return StatusCode(StatusCodes.Status500InternalServerError, e);
+            }
         }
         
     }
