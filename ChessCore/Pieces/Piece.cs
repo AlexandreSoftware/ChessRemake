@@ -25,8 +25,9 @@ namespace ChessCore.Pieces
             this.isAlive=isAlive=true;
             this.color=color;
         }
+        /*added this so that the tests work for now */
         public Piece(){
-            
+
         }
         public MovementMap Mapmovements(){
             MovementMap map = new MovementMap();
