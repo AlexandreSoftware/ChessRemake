@@ -51,24 +51,29 @@ namespace ChessService
                 );
         }
         private string ConvertToString(Piece t){
-            return nameof(t); 
+            
+            return t.GetType().Name;
         }
         private Position ConvertToPosition(DisplayPosition dpi){
             return new Position(ConvertToNumber(dpi.x),dpi.y);
         }
         public Piece ConvertToPiece(DisplayPiece dpiece){
-            switch(dpiece.type.ToLower()){
+                return InstantiatePiece(new object[]{
+                    dpiece.id,ConvertToPosition( dpiece.dPosition)
+                    ,dpiece.isAlive,
+                    ConvertToColor(dpiece.color)},GetTypeOfPiece(dpiece.type));
+        }
+        public Piece InstantiatePiece(object[] args,Type t){
+            return (Piece)Activator.CreateInstance(t, args);
+        }   
+        public Type GetTypeOfPiece(string type){
+            switch(type){
                 case "pawn":
-                    return new Pawn(
-                        dpiece.id
-                    ,ConvertToPosition( dpiece.dPosition)
-                    ,dpiece.isAlive
-                    ,ConvertToColor(dpiece.color)
-                    );
+                    return new Pawn().GetType();
 
                 default:
                     throw new IOException("ERROR: Invalid Type");
             }
-        }
+        } 
     }
 }
