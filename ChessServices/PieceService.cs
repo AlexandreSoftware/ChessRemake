@@ -69,8 +69,9 @@ namespace ChessService
         public Type GetTypeOfPiece(string type){
             switch(type){
                 case "pawn":
-                    return new Pawn().GetType();
-
+                    return typeof(Pawn);
+                case "king":
+                    return typeof(King);
                 default:
                     throw new IOException("ERROR: Invalid Type");
             }
