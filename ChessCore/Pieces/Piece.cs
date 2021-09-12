@@ -39,19 +39,19 @@ namespace ChessCore.Pieces
         }
         public MovementMap emulateMovement(Direction d,MovementMap pmap){
             if(d==Direction.Top){
-                return MakeMovement(new Position(0,1),pmap);
+                return TryMakeMovement(new Position(0,1),pmap);
             }
             else if(d==Direction.Right){
-                return MakeMovement(new Position(1,0),pmap);
+                return TryMakeMovement(new Position(1,0),pmap);
             }
             else if(d==Direction.Bottom){
-                return MakeMovement(new Position(0,-1),pmap);
+                return TryMakeMovement(new Position(0,-1),pmap);
             }
             else{
-                return MakeMovement(new Position(-1,0),pmap);
+                return TryMakeMovement(new Position(-1,0),pmap);
             }
         }
-        public abstract MovementMap MakeMovement(Position p,MovementMap map);
+        public abstract MovementMap TryMakeMovement(Position p,MovementMap map);
         public bool CheckForPiece(Position p){
             if(parentMap.choosePiece(p)!=null){
                 return true;

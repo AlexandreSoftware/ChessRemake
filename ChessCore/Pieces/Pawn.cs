@@ -14,7 +14,7 @@ namespace ChessCore.Pieces{
         }
         public Pawn():base(){}
 
-        public override MovementMap MakeMovement(Position p, MovementMap pmap){
+        public override MovementMap TryMakeMovement(Position p, MovementMap pmap){
             if(this.color==Color.White){
                 p= new Position(0,1);
             }
